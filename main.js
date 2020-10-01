@@ -7,8 +7,9 @@ const io=require('socket.io')(http)
 app.use(express.static(path.join(__dirname,'public')))
 io.on('connection',(sock)=>{
     console.log('A user connected!')
+    
     sock.on('create or join',(room)=>{
-        console.log('count or join room ',room)
+        
         const myRoom=io.sockets.adapter.rooms[room]||{length:0}
         const numClients=myRoom.length
         console.log(room,' has ',numClients,' clients')
@@ -37,6 +38,9 @@ io.on('connection',(sock)=>{
     })
     sock.on('answer',(event)=>{
         sock.broadcast.to(event.room).emit('answer',event.sdp)
+    })
+    sock.on('message',data=>{
+        sock.broadcast.to(data.room).emit('message',data.text)
     })
 })
 http.listen(port,()=>

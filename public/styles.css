@@ -1,0 +1,44 @@
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color:white;
+    font-size: 25px;
+    
+}
+div.send {
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    border-style: solid;
+    border-color:#C70039;
+    background-color: #888888;
+}
+div.text{
+    border-style: solid;
+    border-color:black;
+    height: 100%;
+    overflow-y: scroll;
+    max-height: 100px;
+}
+
+video.localVideo{
+    float:left;
+    width: 50%;
+}
+video.remoteVideo{
+    width: 100%;
+    height: 100%;
+}
+div.remoteVideoDiv{
+    float:left;
+    width: 70%;
+}
+div.otherDiv{
+    float:left;
+    width: 30%;
+}
+.btn{
+    float: left;
+    width:30%;
+}

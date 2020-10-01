@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <head>
     <title> WebRTC testing app</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <h1>WebRTC</h1>
+    <div id="forChat" class="sticky" style="display: none">
+        <div class="send">
+            <input id="msgText" type="text" placeholder="Type...">
+            <button id="sendBtn">Send</button>
+        </div>
+        <div class="text" id = "message-container">
+            
+        </div>
+    </div>
     <div id="selectRoom">
         <label>Type Room Name</label>
         <input id="roomNumber" type="text">
         <button id="goRoom">Go</button>
     </div>
     <div id="consultingRoom" style="display: none">
-        <video id="localVideo" autoplay></video>
-        <video id="remoteVideo" autoplay></video>
-
+        <div class="remoteVideoDiv">
+            <video class="remoteVideo" id="remoteVideo" autoplay></video>
+        </div>
+        <div class="otherDiv">
+            <div class="localVideoDiv">
+                <video class="localVideo" id="localVideo" autoplay muted></video>
+            </div>
+            <div>
+                <button class="btn" id="screenShare">Screen Share</button>
+                <button class="btn" id="endShare" style="display: none">End Share</button>
+                <button class="btn" id="video">Video</button>
+                <button class="btn" id="audio">Sound</button>
+            </div>
+        </div>
     </div>
+    
     <script src="/socket.io/socket.io.js"></script>
     <script src="/app.js"></script>
     
