@@ -150,6 +150,8 @@ socket.on('message',otherText=>{
 socket.on('full',()=>
 {
     alert('The room is full')
+    inputRoomNumber.placeholder='Type room name..'
+    inputRoomNumber.value=""
 })
 
 socket.on('candidate',event=>{

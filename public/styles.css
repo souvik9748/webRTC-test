@@ -46,3 +46,12 @@ div.otherDiv{
     float: left;
     width:30%;
 }
+.index{
+    border-style: solid;
+    border-color:#C70039;
+    background-color: #dac5c5;
+}
+.button{
+    color: white;
+    background-color: green;
+}
