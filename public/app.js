@@ -40,10 +40,7 @@ btnGoRoom.onclick=()=>{
     alert('Please provide a room number')
     else{
         roomNumber=inputRoomNumber.value
-        socket.emit('create or join',roomNumber)
-        divSelectRoom.style='display:none'
-        divConsultingRoom.style='display:block'
-        forChat.style='display:block'
+        socket.emit('create or join',roomNumber)    
     }
     
 }
@@ -62,6 +59,9 @@ audio.onclick=()=>{
 sendButton.onclick=sendMessage
 socket.on('created',room=>{
     console.log('created')
+    divSelectRoom.style='display:none'
+    divConsultingRoom.style='display:block'
+    forChat.style='display:block'
     navigator.mediaDevices.getUserMedia(streamConstraints).then((stream)=>{
         localStream=stream
         localVideo.srcObject=stream
@@ -73,6 +73,9 @@ socket.on('created',room=>{
 })
 socket.on('joined',room=>{
     console.log('joined')
+    divSelectRoom.style='display:none'
+    divConsultingRoom.style='display:block'
+    forChat.style='display:block'
     navigator.mediaDevices.getUserMedia(streamConstraints).then((stream)=>{
         localStream=stream
         localVideo.srcObject=stream
@@ -144,6 +147,11 @@ socket.on('message',otherText=>{
     msgContainer.innerHTML += '<div><b>' + 'Other' + '</b>: ' + otherText + '</div>'
     msgContainer.scrollTop = msgContainer.scrollHeight - msgContainer.clientHeight;
 })
+socket.on('full',()=>
+{
+    alert('The room is full')
+})
+
 socket.on('candidate',event=>{
     console.log('candidate')
     var candidate=new RTCIceCandidate({
